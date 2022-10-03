@@ -46,7 +46,7 @@ app.get('/api' , (req, res)=>{
 app.get('/api/menuItems/:id', (req, res) => {
     const searchedArray = []
     menuItems.forEach(el => {
-    if(el.itemName.toLowerCase().includes(req.params.id)){
+    if(el.itemName.toLowerCase().includes(req.params.id.toLowerCase())){
         searchedArray.push(el)
     }
 })
