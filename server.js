@@ -9,7 +9,7 @@ app.use(cors())
 
 
 
-const menuItems = { 
+const menuItems = [{ 
     "char_id":1,
     'porkBowl': {
     'itemName' : 'Pork Belly Noodle Bowl',
@@ -36,7 +36,7 @@ const menuItems = {
     
 },
 
-}
+}]
 
 app.get('/api/menuItems', (req,res) => {
     res.json(menuItems)
