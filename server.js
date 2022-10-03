@@ -3,9 +3,10 @@ const app = express()
 const cors = require("cors")
 const {request} = require('http')
 const nodemon = require('nodemon')
-const PORT = 8000
+const PORT = 9000
 
 app.use(cors())
+
 
 
 
@@ -40,12 +41,34 @@ const menuItems = [ {
 app.get('/api/menuItems', (req,res) => {
     res.json(menuItems)
 })
+app.get('/api' , (req, res)=>{ 
+    res.json(menuItems)
+})
 
+
+app.get('/api/menuItems/:id', (req, res) => {
+    const loopedArray = []
+    menuItems.forEach(object => {
+        loopedArray.push(object.itemName)
+    })
+    const arr = []
+    loopedArray.forEach(el => {
+    if(el.toLowerCase().includes(req.params.id)){
+        arr.push(el)
+    }
+})
+    res.json(arr)
+})
 
 
 
 
 app.listen( process.env.PORT || PORT, () => {
     console.log(`Server is runnning on ${PORT}`)
+    
 })
-//
+
+
+
+
+
