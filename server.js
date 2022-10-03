@@ -34,8 +34,6 @@ const menuItems = [ {
     "ingredients": "Slow-roasted Turkey Breast, Black Pepper Bacon, Pork Pâte, Cilantro, Jalapeño, Onions, and Grilled Poblano Mayonnaise served with French Fries",
     "allergens": "gluten, dairy",
 },
-
-
 ]
 
 app.get('/api/menuItems', (req,res) => {
@@ -45,29 +43,20 @@ app.get('/api' , (req, res)=>{
     res.json(menuItems)
 })
 
-
 app.get('/api/menuItems/:id', (req, res) => {
-    const loopedArray = []
-    menuItems.forEach(object => {
-        loopedArray.push(object.itemName)
-    })
-    const arr = []
-    loopedArray.forEach(el => {
-    if(el.toLowerCase().includes(req.params.id)){
-        arr.push(el)
+    const searchedArray = []
+    menuItems.forEach(el => {
+    if(el.itemName.toLowerCase().includes(req.params.id)){
+        searchedArray.push(el)
     }
 })
-    res.json(arr)
+res.json(searchedArray)
 })
-
-
-
 
 app.listen( process.env.PORT || PORT, () => {
     console.log(`Server is runnning on ${PORT}`)
     
 })
-
 
 
 
